@@ -1,6 +1,12 @@
-# boggle_solver
+# BoggleSolver
+A computer vision utilizing Boggle solving application.
 
-A new Flutter project.
+## Developers
+
+Connor Irwin - connor.irw@gmail.com
+Bennett Bartel - bbartel@carthage.edu
+Erik Carlson - 
+Michael Idzik - michael.idzik01@gmail.com
 
 ## Getting Started
 
