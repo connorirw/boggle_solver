@@ -5,7 +5,7 @@ A computer vision utilizing Boggle solving application.
 
 Connor Irwin - connor.irw@gmail.com\
 Bennett Bartel - bbartel@carthage.edu\
-Erik Carlson - \
+Erik Carlson - ecarlson1@carthage.edu\
 Michael Idzik - michael.idzik01@gmail.com
 
 ## Getting Started
