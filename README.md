@@ -1,11 +1,11 @@
-# BoggleSolver
+# Boggle Solver
 A computer vision utilizing Boggle solving application.
 
 ## Developers
 
-Connor Irwin - connor.irw@gmail.com
-Bennett Bartel - bbartel@carthage.edu
-Erik Carlson - 
+Connor Irwin - connor.irw@gmail.com\
+Bennett Bartel - bbartel@carthage.edu\
+Erik Carlson - \
 Michael Idzik - michael.idzik01@gmail.com
 
 ## Getting Started
