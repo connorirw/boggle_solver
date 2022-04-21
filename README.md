@@ -1,5 +1,5 @@
 # Boggle Solver
-A computer vision utilizing Boggle solving application.
+A computer vision utilizing, Boggle solving application.
 
 ## Developers
 
