@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'leaderboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,51 +31,53 @@ class MyApp extends StatelessWidget {
             title: Text('Boggle Solver'),
           ),
           body: Center(
-              child: Column(
-                children: <Widget>[
-                  const Icon(
-                    Icons.add_a_photo,
-                    size: 100, 
-                    color: Color.fromARGB(255, 71, 149, 236)
-                  ),
-                  
-                  Container(
-                    margin: const EdgeInsets.all(25),
-                    child: FlatButton(
-                      onPressed: _openCamera,
-                      child: const Text(
-                        'Take Picture',
-                        style: TextStyle(fontSize: 15.0),
-                      ),
-                      color: const Color.fromARGB(255, 71, 149, 236),
-                      textColor: const Color.fromARGB(255, 250, 250, 250),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(25),
-                    child: FlatButton(
-                      child: const Text(
-                        'Select From Camera Roll',
-                        style: TextStyle(fontSize: 15.0),
-                      ),
-                      color: const Color.fromARGB(255, 71, 149, 236),
-                      textColor: const Color.fromARGB(255, 250, 250, 250),
-                      onPressed: _openGallery,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(25),
-                    child: FlatButton(
-                      onPressed: _openCamera,
-                      child: const Text(
-                        'Leaderboard',
-                        style: TextStyle(fontSize: 15.0),
-                      ),
-                      color: const Color.fromARGB(255, 71, 149, 236),
-                      textColor: const Color.fromARGB(255, 250, 250, 250),
-                    ),
-                  ),
-                ]))),
+              child: Column(children: <Widget>[
+            const Icon(Icons.add_a_photo,
+                size: 100, color: Color.fromARGB(255, 71, 149, 236)),
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: FlatButton(
+                onPressed: _openCamera,
+                child: const Text(
+                  'Take Picture',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+                color: const Color.fromARGB(255, 71, 149, 236),
+                textColor: const Color.fromARGB(255, 250, 250, 250),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: FlatButton(
+                child: const Text(
+                  'Select From Camera Roll',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+                color: const Color.fromARGB(255, 71, 149, 236),
+                textColor: const Color.fromARGB(255, 250, 250, 250),
+                onPressed: _openGallery,
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: FlatButton(
+                //onPressed: _openCamera,
+                child: const Text(
+                  'Leaderboard',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+                color: const Color.fromARGB(255, 71, 149, 236),
+                textColor: const Color.fromARGB(255, 250, 250, 250),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const leaderboard()),
+                  );
+                },
+              ),
+            ),
+          ]))),
     );
   }
 }
