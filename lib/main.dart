@@ -61,6 +61,18 @@ class MyApp extends StatelessWidget {
                       onPressed: _openGallery,
                     ),
                   ),
+                  Container(
+                    margin: const EdgeInsets.all(25),
+                    child: FlatButton(
+                      onPressed: _openCamera,
+                      child: const Text(
+                        'Leaderboard',
+                        style: TextStyle(fontSize: 15.0),
+                      ),
+                      color: const Color.fromARGB(255, 71, 149, 236),
+                      textColor: const Color.fromARGB(255, 250, 250, 250),
+                    ),
+                  ),
                 ]))),
     );
   }
