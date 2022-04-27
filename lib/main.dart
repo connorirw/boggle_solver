@@ -2,13 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:boggle_solver/leaderboard.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'leaderboard.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MaterialApp(
+      title: "App",
+      home: MyApp(),
+    ));
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -69,11 +70,9 @@ class MyApp extends StatelessWidget {
                 color: const Color.fromARGB(255, 71, 149, 236),
                 textColor: const Color.fromARGB(255, 250, 250, 250),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const leaderboard()),
-                  );
+                  //right way: use context in below level tree with MaterialApp
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => leaderboard()));
                 },
               ),
             ),
