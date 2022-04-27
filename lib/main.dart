@@ -14,15 +14,41 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+          appBar: AppBar(
+            title: Text('Boggle Solver'),
+          ),
+          body: Center(
+              child: Column(children: <Widget>[
+            Container(
+              child: Icon(Icons.add_a_photo,
+                  size: 100, color: Color.fromARGB(255, 71, 149, 236)),
+            ),
+            Container(
+              margin: EdgeInsets.all(25),
+              child: FlatButton(
+                child: Text(
+                  'Take Picture',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+                color: Color.fromARGB(255, 71, 149, 236),
+                textColor: Color.fromARGB(255, 250, 250, 250),
+                onPressed: () {},
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(25),
+              child: FlatButton(
+                child: Text(
+                  'Select From Camera Roll',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+                color: Color.fromARGB(255, 71, 149, 236),
+                textColor: Color.fromARGB(255, 250, 250, 250),
+                onPressed: () {},
+              ),
+            ),
+          ]))),
     );
   }
 }
