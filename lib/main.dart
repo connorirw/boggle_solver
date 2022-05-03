@@ -2,10 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:convert';
+import 'dart:html';
+
 import 'package:boggle_solver/leaderboard.dart';
 import 'package:boggle_solver/results.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io' as Io;
+import 'package:http/http.dart' as http;
+import "dart:core";
 
 void main() => runApp(MaterialApp(
       title: "App",
@@ -15,9 +21,29 @@ void main() => runApp(MaterialApp(
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  void _parseText(XFile? img) async {
+    var bytes = Io.File(img!.path.toString()).readAsBytesSync();
+    String img64 = base64Encode(bytes);
+    //print(img64);
+
+    //Uri url = "https://api.ocr.space/parse/image";
+    var httpsUri =
+        Uri(scheme: 'https', host: 'api.ocr.space', path: '/parse/image');
+
+    var payload = {"base64Image": "data:image/jpg;base64,${img64.toString()}"};
+    var header = {"apikey": "K83166238588957"};
+    var post = await http.post(httpsUri, body: payload, headers: header);
+
+    String parsedText = '';
+    var result = jsonDecode(post.body);
+    parsedText = result['ParsedResults'][0]['ParsedText'];
+    print(parsedText);
+  }
+
   void _openCamera(context) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    _parseText(image);
     Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
   }
 
