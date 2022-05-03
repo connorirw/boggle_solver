@@ -21,6 +21,8 @@ void main() => runApp(MaterialApp(
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  void _importText() async {}
+
   void _parseText(XFile? img) async {
     var bytes = Io.File(img!.path.toString()).readAsBytesSync();
     String img64 = base64Encode(bytes);
