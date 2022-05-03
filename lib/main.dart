@@ -8,6 +8,7 @@ import 'dart:html';
 import 'package:boggle_solver/leaderboard.dart';
 import 'package:boggle_solver/results.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io' as Io;
 import 'package:http/http.dart' as http;
@@ -21,8 +22,17 @@ void main() => runApp(MaterialApp(
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  void _importText() async {}
+  Future<List<String>> _importText() async {
+    List<String> words = [];
+    await rootBundle.loadString('assets/text/bigDictionary.txt').then((q) {
+      for (String i in LineSplitter().convert(q)) {
+        words.add(i);
+      }
+    });
+    return words;
+  }
 
+/*
   void _parseText(XFile? img) async {
     var bytes = Io.File(img!.path.toString()).readAsBytesSync();
     String img64 = base64Encode(bytes);
@@ -41,6 +51,7 @@ class MyApp extends StatelessWidget {
     parsedText = result['ParsedResults'][0]['ParsedText'];
     print(parsedText);
   }
+*/
 
   void _openCamera(context) async {
     final ImagePicker _picker = ImagePicker();
