@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
   void _openCamera(context) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    _parseText(image);
+    //_parseText(image);
     Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
   }
 
