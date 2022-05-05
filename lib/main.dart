@@ -52,11 +52,16 @@ class MyApp extends StatelessWidget {
     print(parsedText);
   }
 */
+//////
+
+
+
+/////
 
   void _openCamera(context) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    _parseText(image);
+    //_parseText(image);
     Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
   }
 
@@ -121,4 +126,14 @@ class MyApp extends StatelessWidget {
           ]))),
     );
   }
+
+}
+
+
+
+
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+
+  return directory.path;
 }
