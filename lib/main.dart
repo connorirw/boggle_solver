@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:boggle_solver/leaderboard.dart';
 import 'package:boggle_solver/results.dart';

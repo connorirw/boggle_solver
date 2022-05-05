@@ -3,17 +3,31 @@ import 'package:flutter/material.dart';
 class results extends StatelessWidget {
   const results({Key? key}) : super(key: key);
 
-  @override
   Widget build(BuildContext context) {
+  final _controller = TextEditingController();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('First Route'),
-      ),
       body: Center(
-        child: ElevatedButton(
-          child: const Text('Open route'),
-          onPressed: () {
-            // Navigate to second route when tapped.
+        child: TextField(
+          controller: _controller,
+          onSubmitted: (String value) async {
+            await showDialog<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const Text('Thanks!'),
+                  content: Text(
+                      'You typed "$value", which has length ${value.characters.length}.'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('OK'),
+                    ),
+                  ],
+                );
+              },
+            );
           },
         ),
       ),
