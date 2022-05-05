@@ -1,4 +1,5 @@
 import 'package:retrieval/trie.dart';
+import 'package:english_words/english_words.dart' as dictionary;
 import 'dart:io';
 
 //Class that takes in a list of 16 strings creates a boggle board with a list of words in the board
@@ -9,7 +10,11 @@ class BoggleSolver{
   BoggleSolver(List<String> diceValues) {
     assert(diceValues.length == 16);
 
-    //TODO: create a trie with a dictionary
+    //initialize the trie with list of words
+    final List<String> words = dictionary.all;
+    words.forEach(_trie.insert);
+    //TODO: implement a more complete dictionary for the trie
+  
     //add dice to board
     for (int i = 0; i < 4; i++) {
       _board.add([]);
