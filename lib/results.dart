@@ -1,47 +1,79 @@
 import 'package:flutter/material.dart';
 
-List<String> words = [];
+void main() => runApp(const results());
 
 class results extends StatelessWidget {
   const results({Key? key}) : super(key: key);
 
-  void _addWord(String word) {
-    words.add(word);
-    print(words);
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Retrieve Text Input',
+      home: MyCustomForm(),
+    );
+  }
+}
+
+// Define a custom Form widget.
+class MyCustomForm extends StatefulWidget {
+  const MyCustomForm({Key? key}) : super(key: key);
+
+  @override
+  _MyCustomFormState createState() => _MyCustomFormState();
+}
+
+// Define a corresponding State class.
+// This class holds the data related to the Form.
+class _MyCustomFormState extends State<MyCustomForm> {
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final myController = TextEditingController();
+  List<String> words = [];
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
   }
 
-  Widget build(BuildContext context) {
-    final _controller = TextEditingController();
+  void _addWordToArray(String word) {
+    //words.add(word);
+    words = word.split(";");
+    print(words);
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            // Retrieve the text the that user has entered by using the
+            // TextEditingController.
+            content: Text(words.join("\n")));
+      },
+    );
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      appBar: AppBar(
+        title: const Text('Retrieve Text Input'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: TextField(
-          controller: _controller,
-          onSubmitted: (String value) async {
-            _addWord(value.toString());
-            /*
-            await showDialog<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: const Text('Thanks!'),
-                  content: Text(
-                      'You typed "$value", which has length ${value.characters.length}.'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        
-                      },
-                      child: const Text('OK'),
-                    ),
-                  ],
-                );
-              },
-            );
-            */
-          },
+          controller: myController,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        // When the user presses the button, show an alert dialog containing
+        // the text that the user has entered into the text field.
+        onPressed: () {
+          List<String> tmp = words;
+          _addWordToArray(words.join("\n") + "\n" + myController.text);
+          myController.clear();
+        },
+        tooltip: 'Show me the value!',
+        child: const Icon(Icons.text_fields),
       ),
     );
   }
