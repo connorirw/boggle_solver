@@ -26,6 +26,19 @@ class BoggleSolver{
     //solve the board
     _solve();
   }
+
+  String checkWord(String word) {
+    if(_trie.has(word)) {
+      if (_wordsOnBoard.contains(word)) {
+        return 'on_board';
+      }
+      return 'not_on_board';
+    }
+    else {
+      return 'not_in_dictionary';
+    }
+  } 
+
   
   void _solve() {
     Set<String> empty = {};
