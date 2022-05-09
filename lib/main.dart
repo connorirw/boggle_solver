@@ -31,27 +31,6 @@ class MyApp extends StatelessWidget {
     return words;
   }
 
-/*
-  void _parseText(XFile? img) async {
-    var bytes = Io.File(img!.path.toString()).readAsBytesSync();
-    String img64 = base64Encode(bytes);
-    //print(img64);
-
-    //Uri url = "https://api.ocr.space/parse/image";
-    var httpsUri =
-        Uri(scheme: 'https', host: 'api.ocr.space', path: '/parse/image');
-
-    var payload = {"base64Image": "data:image/jpg;base64,${img64.toString()}"};
-    var header = {"apikey": "K83166238588957"};
-    var post = await http.post(httpsUri, body: payload, headers: header);
-
-    String parsedText = '';
-    var result = jsonDecode(post.body);
-    parsedText = result['ParsedResults'][0]['ParsedText'];
-    print(parsedText);
-  }
-*/
-
   void _openCamera(context) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
