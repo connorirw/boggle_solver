@@ -39,7 +39,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
   void _addWordToArray(String word) {
     //words.add(word);
-    words = word.split(";");
+    words = word.split(" ");
     print(words);
     showDialog(
       context: context,
