@@ -58,8 +58,18 @@ class _MyCustomFormState extends State<MyCustomForm> {
     'p'
   ]);
 
+  //removes word from user found words if the computer did not find them
+  void _cleanUserFoundWords() {
+    for (var i = 0; i < words.length; i++) {
+      if (!b.foundWords.contains(words[i])) {
+        words.removeAt(i);
+      }
+    }
+  }
+
   double _getScore(List<String> userWords, List<String> compWords) {
     score_calculator c = score_calculator();
+    _cleanUserFoundWords();
     int userScore = c.getMaxScore(userWords);
     int compScore = c.getMaxScore(compWords);
     return (userScore / compScore) * 100;
