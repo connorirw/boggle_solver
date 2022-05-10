@@ -1,4 +1,6 @@
+import 'package:boggle_solver/boggle_solver.dart';
 import 'package:flutter/material.dart';
+import 'score_calculator.dart';
 
 void main() => runApp(const results());
 
@@ -36,6 +38,25 @@ class _MyCustomFormState extends State<MyCustomForm> {
     myController.dispose();
     super.dispose();
   }
+
+  BoggleSolver b = BoggleSolver([
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p'
+  ]);
 
   void _addWordToArray(String word) {
     //words.add(word);
