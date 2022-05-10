@@ -58,6 +58,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
     'p'
   ]);
 
+  double _getScore(List<String> userWords, List<String> compWords) {
+    score_calculator c = score_calculator();
+    int userScore = c.getMaxScore(userWords);
+    int compScore = c.getMaxScore(compWords);
+    return userScore / compScore;
+  }
+
   void _addWordToArray(String word) {
     //words.add(word);
     words = word.split(" ");

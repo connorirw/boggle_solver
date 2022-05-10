@@ -3,11 +3,12 @@ import 'package:english_words/english_words.dart' as dictionary;
 import 'dart:io';
 
 //Class that takes in a list of 16 strings creates a boggle board with a list of words in the board
-class BoggleSolver{
+class BoggleSolver {
   Trie _trie = Trie();
   Set<String> _wordsOnBoard = {};
-  
-  final List<List<String>> _board = []; //dice in order from left to right, top to bottom
+  final List<List<String>> _board =
+      []; //dice in order from left to right, top to bottom
+  List<String> foundWords = [];
   BoggleSolver(List<String> diceValues) {
     assert(diceValues.length == 16);
 
@@ -15,7 +16,7 @@ class BoggleSolver{
     final List<String> words = dictionary.all;
     words.forEach(_trie.insert);
     //TODO: implement a more complete dictionary for the trie
-  
+
     //add dice to board
     for (int i = 0; i < 4; i++) {
       _board.add([]);
@@ -29,47 +30,45 @@ class BoggleSolver{
   }
 
   String checkWord(String word) {
-    if(_trie.has(word)) {
+    if (_trie.has(word)) {
       if (_wordsOnBoard.contains(word)) {
         return 'on_board';
       }
       return 'not_on_board';
-    }
-    else {
+    } else {
       return 'not_in_dictionary';
     }
-  } 
+  }
 
-  
-  
+  List<String> _getFoundWords() {
+    return foundWords;
+  }
+
   void _solve() {
-    Set<String> empty = {};
+    //Set<String> empty = {};
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 4; j++) {
-        _recursiveSolver(i,j,"", empty);
+        _recursiveSolver(i, j, "", foundWords);
       }
     }
   }
 
-  void _recursiveSolver(int row, int col, String currentWord, Set<String> diceUsed){
+  void _recursiveSolver(
+      int row, int col, String currentWord, List<String> diceUsed) {
     //Recursive alorithm for find words in boggle board
     String diceKey = row.toString() + ':' + col.toString();
     //Base Case 1: row or col is out of bounds of board
-    if (row > 3 || row < 0 || col > 3 || col < 0)
-    {
+    if (row > 3 || row < 0 || col > 3 || col < 0) {
       //do nothing and return
     }
     //Base Case 2: die has already been used in the word
-    else if (diceUsed.contains(diceKey)){
+    else if (diceUsed.contains(diceKey)) {
       //do nothing and return
-    }
-    else
-    {
+    } else {
       currentWord += _board[row][col];
       if (_trie.find(currentWord).isEmpty) {
         //only continue if words can start with current dice
-      }
-      else {
+      } else {
         if (_trie.has(currentWord)) {
           _wordsOnBoard.add(currentWord);
         }
@@ -85,5 +84,4 @@ class BoggleSolver{
       }
     }
   }
-
 }
