@@ -1,5 +1,3 @@
-
-
 class score_calculator{
   int getMaxScore(List<String> wordsOnBoard) {
     int maxScore = 0;
@@ -19,7 +17,7 @@ class score_calculator{
     return maxScore;
   }
 
-  
+
 
 
 }
