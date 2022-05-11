@@ -80,6 +80,7 @@ class BoggleSolver {
         _recursiveSolver(row + 1, col - 1, currentWord, diceUsed); //southwest
         _recursiveSolver(row, col - 1, currentWord, diceUsed); //west
         _recursiveSolver(row - 1, col, currentWord, diceUsed); //northwest
+        diceUsed.remove(diceKey);
       }
     }
   }
