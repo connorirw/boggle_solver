@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
     return words;
   }
 
+<<<<<<< HEAD
 /*
   void _parseText(XFile? img) async {
     var bytes = Io.File(img!.path.toString()).readAsBytesSync();
@@ -57,10 +58,11 @@ class MyApp extends StatelessWidget {
 
 /////
 
+=======
+>>>>>>> b1c798425c582c2c92f6e1795c08f4aa378c9d8d
   void _openCamera(context) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    //_parseText(image);
     Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
   }
 
