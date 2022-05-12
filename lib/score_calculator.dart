@@ -1,5 +1,5 @@
 class score_calculator{
-  int getMaxScore(List<String> wordsOnBoard) {
+  int calcScore(List<String> wordsOnBoard) {
     int maxScore = 0;
     for (int i = 0; i < wordsOnBoard.length; i++) {
       if (wordsOnBoard.elementAt(i).length == 3 || wordsOnBoard.elementAt(i).length == 4) {
@@ -16,10 +16,6 @@ class score_calculator{
     }
     return maxScore;
   }
-
-
-
-
 }
 
 
