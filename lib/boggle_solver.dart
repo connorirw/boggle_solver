@@ -6,8 +6,7 @@ import 'dart:io';
 class BoggleSolver {
   Trie _trie = Trie();
   Set<String> _wordsOnBoard = {};
-  final List<List<String>> _board =
-      []; //dice in order from left to right, top to bottom
+  final List<List<String>> _board =[]; //dice in order from left to right, top to bottom
   List<String> foundWords = [];
   BoggleSolver(List<String> diceValues) {
     assert(diceValues.length == 16);
@@ -20,7 +19,7 @@ class BoggleSolver {
     //add dice to board
     for (int i = 0; i < 4; i++) {
       _board.add([]);
-      for (int j = 0; j < 4; i++) {
+      for (int j = 0; j < 4; j++) {
         _board[i].add(diceValues[(4 * i) + j]);
       }
     }
@@ -81,6 +80,7 @@ class BoggleSolver {
         _recursiveSolver(row + 1, col - 1, currentWord, diceUsed); //southwest
         _recursiveSolver(row, col - 1, currentWord, diceUsed); //west
         _recursiveSolver(row - 1, col, currentWord, diceUsed); //northwest
+        diceUsed.remove(diceKey);
       }
     }
   }
