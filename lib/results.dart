@@ -70,8 +70,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
   double _getScore(List<String> userWords, List<String> compWords) {
     score_calculator c = score_calculator();
     _cleanUserFoundWords();
-    int userScore = c.getMaxScore(userWords);
-    int compScore = c.getMaxScore(compWords);
+    int userScore = c.calcScore(userWords);
+    int compScore = c.calcScore(compWords);
     return (userScore / compScore) * 100;
   }
 
