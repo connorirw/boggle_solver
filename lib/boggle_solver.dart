@@ -44,16 +44,16 @@ class BoggleSolver {
   }
 
   void _solve() {
-    //Set<String> empty = {};
+    Set<String> empty = {};
     for (int i = 0; i < 4; i++) {
       for (int j = 0; j < 4; j++) {
-        _recursiveSolver(i, j, "", foundWords);
+        _recursiveSolver(i, j, "", empty);
       }
     }
   }
 
   void _recursiveSolver(
-      int row, int col, String currentWord, List<String> diceUsed) {
+      int row, int col, String currentWord, Set<String> diceUsed) {
     //Recursive alorithm for find words in boggle board
     String diceKey = row.toString() + ':' + col.toString();
     //Base Case 1: row or col is out of bounds of board
@@ -68,8 +68,8 @@ class BoggleSolver {
       if (_trie.find(currentWord).isEmpty) {
         //only continue if words can start with current dice
       } else {
-        if (_trie.has(currentWord)) {
-          _wordsOnBoard.add(currentWord);
+        if (_trie.has(currentWord) && !foundWords.contains(currentWord) && currentWord.length >= 3) {
+          foundWords.add(currentWord);
         }
         diceUsed.add(diceKey);
         _recursiveSolver(row - 1, col, currentWord, diceUsed); //north
