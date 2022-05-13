@@ -30,8 +30,8 @@ class DiceParcer{
     var header = {"apikey": "K83166238588957"};
     var post = await http.post(httpsUri, body: payload, headers: header);
     String parsedText = '';
-    var result = jsonDecode(post.body);
-    parsedText = result['ParsedResults'][0]['ParsedText'];
+    var result = await jsonDecode(post.body);
+    parsedText = await result['ParsedResults'][0]['ParsedText'];
     return parsedText;
   }
 }
