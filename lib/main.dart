@@ -53,8 +53,11 @@ class MyApp extends StatelessWidget {
     while(image == null) {
       image = await _picker.pickImage(source: ImageSource.gallery);
     }
+    print('image path');
+    print(image.path);
     ocr.DiceParcer parcer = ocr.DiceParcer(Io.File(image.path));
     List<String> lines = await parcer.parse();
+    //List<String> lines = await ocr.DiceParcer.parseBoard(Io.File(image.path));
     //Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
     Navigator.push(context, MaterialPageRoute(builder: (context) => BoardView(lines: lines)));
   }

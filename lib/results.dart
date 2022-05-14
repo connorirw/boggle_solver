@@ -2,23 +2,25 @@ import 'package:boggle_solver/boggle_solver.dart';
 import 'package:flutter/material.dart';
 import 'score_calculator.dart';
 
-void main() => runApp(const results());
+void main() => runApp(results(diceValues: <String>["a","t","i","e","e","a","h","a","v","e","l","r","g","w","i","s"]));
 
 class results extends StatelessWidget {
-  const results({Key? key}) : super(key: key);
+  List<String> diceValues;
+  results({Key? key, required this.diceValues}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Retrieve Text Input',
-      home: MyCustomForm(),
+      home: MyCustomForm(diceValues: diceValues),
     );
   }
 }
 
 // Define a custom Form widget.
 class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({Key? key}) : super(key: key);
+  List<String> diceValues;
+  MyCustomForm({Key? key, required this.diceValues}) : super(key: key);
 
   @override
   _MyCustomFormState createState() => _MyCustomFormState();
@@ -39,24 +41,14 @@ class _MyCustomFormState extends State<MyCustomForm> {
     super.dispose();
   }
 
-   BoggleSolver b = BoggleSolver([
-      "a",
-      "t",
-      "i",
-      "e",
-      "e",
-      "a",
-      "h",
-      "a",
-      "v",
-      "e",
-      "l",
-      "r",
-      "g",
-      "w",
-      "i",
-      "s"
-    ]);
+  late BoggleSolver b;
+
+  @override
+  void initState() {
+    super.initState();
+    b = BoggleSolver(widget.diceValues);
+  }
+
 
   //removes word from user found words if the computer did not find them
   void _cleanUserFoundWords() {

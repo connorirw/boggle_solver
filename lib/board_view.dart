@@ -1,3 +1,4 @@
+import 'package:boggle_solver/results.dart';
 import 'package:flutter/material.dart';
 import 'parse_dice.dart';
 
@@ -22,15 +23,28 @@ class _BoardViewState extends State<BoardView> {
   void initState() {
     super.initState();
     editedLines = widget.lines;
-    _line1.text = editedLines[1];
-    _line2.text = editedLines[2];
-    _line3.text = editedLines[3];
-    _line4.text = editedLines[4];
+    _line1.text = editedLines[0];
+    _line2.text = editedLines[1];
+    _line3.text = editedLines[2];
+    _line4.text = editedLines[3];
   }
 
   void _submitBoard() {
     //TODO
-    print("TODO");
+    print(_line1.text);
+    List<String> diceValues = [];
+    diceValues.addAll(_line1.text.characters);
+    diceValues.addAll(_line2.text.characters);
+    diceValues.addAll(_line3.text.characters);
+    diceValues.addAll(_line4.text.characters);
+    for (int i = 0; i < diceValues.length - 1; i++) {
+      if (diceValues[i] == 'q') {
+        diceValues[i] = 'qu';
+        diceValues.removeAt(i+1);
+      }
+    }
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => results(diceValues: diceValues)));
   }
 
 
