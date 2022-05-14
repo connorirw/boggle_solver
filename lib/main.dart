@@ -4,11 +4,13 @@
 
 import 'dart:convert';
 
+import 'package:boggle_solver/board_view.dart';
 import 'package:boggle_solver/leaderboard.dart';
 import 'package:boggle_solver/results.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'parse_dice.dart' as ocr;
 import 'dart:io' as Io;
 import 'package:http/http.dart' as http;
 import "dart:core";
@@ -37,15 +39,32 @@ class MyApp extends StatelessWidget {
 
 
   void _openCamera(context) async {
+    XFile? image;
     final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
+    while (image == null) {
+      image = await _picker.pickImage(source: ImageSource.camera);
+    }
+    print('image path');
+    print(image.path);
+    ocr.DiceParcer parcer = ocr.DiceParcer(Io.File(image.path));
+    List<String> lines = await parcer.parse();
+    //Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => BoardView(lines: lines)));
   }
 
   void _openGallery(context) async {
+    XFile? image;
     final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
+    while(image == null) {
+      image = await _picker.pickImage(source: ImageSource.gallery);
+    }
+    print('image path');
+    print(image.path);
+    ocr.DiceParcer parcer = ocr.DiceParcer(Io.File(image.path));
+    List<String> lines = await parcer.parse();
+    //List<String> lines = await ocr.DiceParcer.parseBoard(Io.File(image.path));
+    //Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => BoardView(lines: lines)));
   }
 
   @override
