@@ -13,11 +13,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   image_picker: ^0.8.5
   retrieval: ^1.0.1
-<<<<<<< HEAD
+
   path_provider: ^2.0.9
-=======
+
   english_words: ^4.0.0
->>>>>>> b1c798425c582c2c92f6e1795c08f4aa378c9d8d
+
 
 dev_dependencies:
   flutter_test:
