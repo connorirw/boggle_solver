@@ -39,24 +39,24 @@ class _MyCustomFormState extends State<MyCustomForm> {
     super.dispose();
   }
 
-  BoggleSolver b = BoggleSolver([
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p'
-  ]);
+   BoggleSolver b = BoggleSolver([
+      "a",
+      "t",
+      "i",
+      "e",
+      "e",
+      "a",
+      "h",
+      "a",
+      "v",
+      "e",
+      "l",
+      "r",
+      "g",
+      "w",
+      "i",
+      "s"
+    ]);
 
   //removes word from user found words if the computer did not find them
   void _cleanUserFoundWords() {
@@ -70,8 +70,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
   double _getScore(List<String> userWords, List<String> compWords) {
     score_calculator c = score_calculator();
     _cleanUserFoundWords();
-    int userScore = c.getMaxScore(userWords);
-    int compScore = c.getMaxScore(compWords);
+    int userScore = c.calcScore(userWords);
+    int compScore = c.calcScore(compWords);
     return (userScore / compScore) * 100;
   }
 
@@ -88,6 +88,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
             content: Text(words.join("\n")));
       },
     );
+   
+    print(b.foundWords);
   }
 
   @override
