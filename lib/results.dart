@@ -68,6 +68,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
   //removes word from user found words if the computer did not find them
   void _cleanUserFoundWords() {
+    words = words.toSet().toList();
+    //words.insert(0, "fill");
     for (var i = 0; i < words.length; i++) {
       if (!b.foundWords.contains(words[i])) {
         words.removeAt(i);
