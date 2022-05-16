@@ -156,6 +156,6 @@ class Storage {
 
   Future<File> writeData(String data) async {
     final file = await localFile;
-    return file.writeAsString("$data");
+    return file.writeAsString("$data\n", mode: FileMode.append);
   }
 }

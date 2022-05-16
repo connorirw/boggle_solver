@@ -1,6 +1,7 @@
 import 'package:boggle_solver/boggle_solver.dart';
 import 'package:flutter/material.dart';
 import 'score_calculator.dart';
+import 'leaderboard.dart';
 
 void main() => runApp(results(diceValues: <String>[
       "a",
