@@ -107,7 +107,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             // Retrieve the text the that user has entered by using the
             // TextEditingController.
             content: Text(/*words.join("\n")*/ _getScore(words, b.foundWords)
-                .toString()));
+                .toStringAsFixed(2) + "%"));
       },
     );
 
