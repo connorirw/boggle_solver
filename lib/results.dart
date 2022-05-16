@@ -1,7 +1,7 @@
 import 'package:boggle_solver/boggle_solver.dart';
 import 'package:flutter/material.dart';
 import 'score_calculator.dart';
-import 'leaderboard.dart';
+import 'leaderboard.dart' as lb;
 
 void main() => runApp(results(diceValues: <String>[
       "a",
@@ -95,6 +95,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
     _cleanUserFoundWords();
     double score = _getScore(words, b.foundWords); 
     //TODO
+    lb.Storage s = lb.Storage();
+    s.writeData('$username    $score\n');
   }
 
   void _displayScore(String word) {
