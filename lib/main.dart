@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
     print(image.path);
     ocr.DiceParcer parcer = ocr.DiceParcer(Io.File(image.path));
     List<String> lines = await parcer.parse();
-    //Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
     Navigator.push(context, MaterialPageRoute(builder: (context) => BoardView(lines: lines)));
   }
 
@@ -57,8 +56,6 @@ class MyApp extends StatelessWidget {
     print(image.path);
     ocr.DiceParcer parcer = ocr.DiceParcer(Io.File(image.path));
     List<String> lines = await parcer.parse();
-    //List<String> lines = await ocr.DiceParcer.parseBoard(Io.File(image.path));
-    //Navigator.push(context, MaterialPageRoute(builder: (context) => results()));
     Navigator.push(context, MaterialPageRoute(builder: (context) => BoardView(lines: lines)));
   }
 
@@ -121,7 +118,6 @@ class MyApp extends StatelessWidget {
             Container(
               margin: const EdgeInsets.all(25),
               child: FlatButton(
-                //onPressed: _openCamera,
                 child: const Text(
                   'Leaderboard',
                   style: TextStyle(fontSize: 15.0),
@@ -129,7 +125,6 @@ class MyApp extends StatelessWidget {
                 color: const Color.fromARGB(255, 71, 149, 236),
                 textColor: const Color.fromARGB(255, 250, 250, 250),
                 onPressed: () {
-                  //right way: use context in below level tree with MaterialApp
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => leaderboard(storage: Storage())));
                 },

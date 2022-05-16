@@ -71,7 +71,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
   //removes word from user found words if the computer did not find them
   void _cleanUserFoundWords() {
-    //words = words.toSet().toList();
     words.insert(0, "");
     for (var i = 0; i < words.length; i++) {
       if (!b.foundWords.contains(words[i])) {
@@ -93,15 +92,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
   void _saveScore(String answer, String username) {
     words = answer.split(" ");
     _cleanUserFoundWords();
-    double score = _getScore(words, b.foundWords); 
-    //TODO
+    double score = _getScore(words, b.foundWords);
     lb.Storage s = lb.Storage();
     s.writeData('$username    $score%\n');
     _displayScore(answer);
   }
 
   void _displayScore(String word) {
-    //words.add(word);
     words = word.split(" ");
     print(words);
     showDialog(
@@ -110,11 +107,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
         return AlertDialog(
             // Retrieve the text the that user has entered by using the
             // TextEditingController.
-            content: Text(/*words.join("\n")*/ _getScore(words, b.foundWords)
-                .toStringAsFixed(2) + "%"));
+            content:
+                Text(_getScore(words, b.foundWords).toStringAsFixed(2) + "%"));
       },
     );
-
     print(b.foundWords);
   }
 
@@ -124,29 +120,31 @@ class _MyCustomFormState extends State<MyCustomForm> {
       appBar: AppBar(
         title: const Text('Retrieve Text Input'),
       ),
-      body:
-      Center( 
-        child: Column(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: userWordsController,
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                controller: userWordsController,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: userNameController,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                controller: userNameController,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextButton(
-              child: const Text('Submit to Leaderboard'),
-              onPressed: () {_saveScore(userWordsController.text, userNameController.text);}
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextButton(
+                  child: const Text('Submit to Leaderboard'),
+                  onPressed: () {
+                    _saveScore(
+                        userWordsController.text, userNameController.text);
+                  }),
             ),
-          ), 
-        ],
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -154,9 +152,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         // the text that the user has entered into the text field.
         onPressed: () {
           List<String> tmp = words;
-          //_addWordToArray(words.join("\n") + "\n" + myController.text);
           _displayScore(userWordsController.text);
-          //myController.clear();
         },
         tooltip: 'Show me the value!',
         child: const Icon(Icons.text_fields),

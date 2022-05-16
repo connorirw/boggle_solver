@@ -5,14 +5,11 @@ import 'parse_dice.dart';
 class BoardView extends StatefulWidget {
   List<String> lines;
   BoardView({Key? key,  required this.lines} ) : super(key: key);
-
   @override
   _BoardViewState createState() => _BoardViewState();
 }
 
-
 class _BoardViewState extends State<BoardView> {
-
   List<String> editedLines = [];
   TextEditingController _line1 = TextEditingController();
   TextEditingController _line2 = TextEditingController();
@@ -30,7 +27,6 @@ class _BoardViewState extends State<BoardView> {
   }
 
   void _submitBoard() {
-    //TODO
     print(_line1.text);
     List<String> diceValues = [];
     diceValues.addAll(_line1.text.characters);

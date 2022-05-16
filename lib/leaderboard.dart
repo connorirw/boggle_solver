@@ -4,32 +4,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
-
-/*
-class leaderboard extends StatelessWidget {
-  const leaderboard({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('First Route'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Open route'),
-          onPressed: () {
-            // Navigate to second route when tapped.
-          },
-        ),
-      ),
-    );
-  }
-}
-*/
-
-////////////////////////////////////////////
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -107,22 +81,6 @@ class leaderboardState extends State<leaderboard> {
             TextField(
               controller: controller,
             ),
-            /*
-            ElevatedButton(
-              onPressed: writeData,
-              child: Text('Write to File'),
-            ),
-            */
-            // RaisedButton(
-            //   onPressed: readData,
-            //   child: Text("Read from File"),
-            // ),
-            /*
-            ElevatedButton(
-              child: Text("Get DIR path"),
-              onPressed: getAppDirectory,
-            ),
-            */
             ElevatedButton(
               child: Text("Reset Leaderboard"),
               onPressed: _resetData,
