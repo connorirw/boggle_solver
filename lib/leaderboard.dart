@@ -4,6 +4,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
+
+/*
 class leaderboard extends StatelessWidget {
   const leaderboard({Key? key}) : super(key: key);
 
@@ -24,6 +26,7 @@ class leaderboard extends StatelessWidget {
     );
   }
 }
+*/
 
 ////////////////////////////////////////////
 
@@ -34,23 +37,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Reading and Writing to Storage",
-      home: Home(
+      home: leaderboard(
         storage: Storage(),
       ),
     );
   }
 }
 
-class Home extends StatefulWidget {
+
+class leaderboard extends StatefulWidget {
   final Storage storage;
 
-  Home({Key? key, required this.storage}) : super(key: key);
+  leaderboard({Key? key, required this.storage}) : super(key: key);
 
   @override
-  HomeState createState() => HomeState();
+  leaderboardState createState() => leaderboardState();
 }
 
-class HomeState extends State<Home> {
+class leaderboardState extends State<leaderboard> {
   TextEditingController controller = TextEditingController();
   String state = "";
   Future<Directory> _appDocDir = getApplicationDocumentsDirectory();
@@ -74,6 +78,15 @@ class HomeState extends State<Home> {
     return widget.storage.writeData(state);
   }
 
+  void _resetData() {
+    widget.storage.resetData();
+    widget.storage.readData().then((String value) {
+      setState(() {
+        state = value;
+      });
+    });
+  }
+
   void getAppDirectory() {
     setState(() {
       _appDocDir = getApplicationDocumentsDirectory();
@@ -94,7 +107,7 @@ class HomeState extends State<Home> {
             TextField(
               controller: controller,
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: writeData,
               child: Text('Write to File'),
             ),
@@ -102,9 +115,13 @@ class HomeState extends State<Home> {
             //   onPressed: readData,
             //   child: Text("Read from File"),
             // ),
-            RaisedButton(
+            ElevatedButton(
               child: Text("Get DIR path"),
               onPressed: getAppDirectory,
+            ),
+            ElevatedButton(
+              child: Text("Reset Leaderboard"),
+              onPressed: _resetData,
             ),
             FutureBuilder<Directory>(
               future: _appDocDir,
@@ -157,5 +174,10 @@ class Storage {
   Future<File> writeData(String data) async {
     final file = await localFile;
     return file.writeAsString("$data\n", mode: FileMode.append);
+  }
+
+  Future<File> resetData() async {
+    final file = await localFile;
+    return file.writeAsString("Erik    12.5");
   }
 }

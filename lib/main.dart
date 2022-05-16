@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget {
                 onPressed: () {
                   //right way: use context in below level tree with MaterialApp
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => leaderboard()));
+                      MaterialPageRoute(builder: (context) => leaderboard(storage: Storage())));
                 },
               ),
             ),
