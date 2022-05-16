@@ -39,7 +39,7 @@ class BoggleSolver {
     }
   }
 
-  List<String> _getFoundWords() {
+  List<String> getFoundWords() {
     return foundWords;
   }
 

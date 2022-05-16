@@ -2,7 +2,24 @@ import 'package:boggle_solver/boggle_solver.dart';
 import 'package:flutter/material.dart';
 import 'score_calculator.dart';
 
-void main() => runApp(results(diceValues: <String>["a","t","i","e","e","a","h","a","v","e","l","r","g","w","i","s"]));
+void main() => runApp(results(diceValues: <String>[
+      "a",
+      "t",
+      "i",
+      "e",
+      "e",
+      "a",
+      "h",
+      "a",
+      "v",
+      "e",
+      "l",
+      "r",
+      "g",
+      "w",
+      "i",
+      "s"
+    ]));
 
 class results extends StatelessWidget {
   List<String> diceValues;
@@ -49,12 +66,14 @@ class _MyCustomFormState extends State<MyCustomForm> {
     b = BoggleSolver(widget.diceValues);
   }
 
-
   //removes word from user found words if the computer did not find them
   void _cleanUserFoundWords() {
+    //words = words.toSet().toList();
+    //words.insert(0, "fill");
     for (var i = 0; i < words.length; i++) {
       if (!b.foundWords.contains(words[i])) {
         words.removeAt(i);
+        i--;
       }
     }
   }
@@ -64,6 +83,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
     _cleanUserFoundWords();
     int userScore = c.calcScore(userWords);
     int compScore = c.calcScore(compWords);
+    print("user: $userScore, computer: $compScore");
     return (userScore / compScore) * 100;
   }
 
@@ -77,10 +97,11 @@ class _MyCustomFormState extends State<MyCustomForm> {
         return AlertDialog(
             // Retrieve the text the that user has entered by using the
             // TextEditingController.
-            content: Text(words.join("\n")));
+            content: Text(/*words.join("\n")*/ _getScore(words, b.foundWords)
+                .toString()));
       },
     );
-   
+
     print(b.foundWords);
   }
 
