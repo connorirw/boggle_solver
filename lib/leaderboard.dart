@@ -103,7 +103,7 @@ class leaderboardState extends State<leaderboard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text('${state ?? "File is Empty"}'),
+            Text('${state}'),
             TextField(
               controller: controller,
             ),
