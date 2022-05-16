@@ -48,13 +48,14 @@ class MyCustomForm extends StatefulWidget {
 class _MyCustomFormState extends State<MyCustomForm> {
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
-  final myController = TextEditingController();
+  final userWordsController = TextEditingController();
+  final userNameController = TextEditingController();
   List<String> words = [];
 
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    userWordsController.dispose();
     super.dispose();
   }
 
@@ -64,6 +65,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
   void initState() {
     super.initState();
     b = BoggleSolver(widget.diceValues);
+    userNameController.text = 'username';
   }
 
   //removes word from user found words if the computer did not find them
@@ -87,7 +89,14 @@ class _MyCustomFormState extends State<MyCustomForm> {
     return (userScore / compScore) * 100;
   }
 
-  void _addWordToArray(String word) {
+  void _saveScore(String answer, String username) {
+    words = answer.split(" ");
+    _cleanUserFoundWords();
+    double score = _getScore(words, b.foundWords); 
+    //TODO
+  }
+
+  void _displayScore(String word) {
     //words.add(word);
     words = word.split(" ");
     print(words);
@@ -111,10 +120,29 @@ class _MyCustomFormState extends State<MyCustomForm> {
       appBar: AppBar(
         title: const Text('Retrieve Text Input'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: TextField(
-          controller: myController,
+      body:
+      Center( 
+        child: Column(children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: userWordsController,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: userNameController,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextButton(
+              child: const Text('Submit to Leaderboard'),
+              onPressed: () {_saveScore(userWordsController.text, userNameController.text);}
+            ),
+          ), 
+        ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -123,7 +151,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         onPressed: () {
           List<String> tmp = words;
           //_addWordToArray(words.join("\n") + "\n" + myController.text);
-          _addWordToArray(myController.text);
+          _displayScore(userWordsController.text);
           //myController.clear();
         },
         tooltip: 'Show me the value!',
