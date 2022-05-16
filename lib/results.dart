@@ -96,7 +96,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
     double score = _getScore(words, b.foundWords); 
     //TODO
     lb.Storage s = lb.Storage();
-    s.writeData('$username    $score\n');
+    s.writeData('$username    {score}%\n');
+    _displayScore(answer);
   }
 
   void _displayScore(String word) {

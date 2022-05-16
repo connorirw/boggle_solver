@@ -178,6 +178,6 @@ class Storage {
 
   Future<File> resetData() async {
     final file = await localFile;
-    return file.writeAsString("Erik    %12.50\n");
+    return file.writeAsString("Erik    12.50%\n");
   }
 }
