@@ -69,7 +69,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
   //removes word from user found words if the computer did not find them
   void _cleanUserFoundWords() {
     //words = words.toSet().toList();
-    //words.insert(0, "fill");
+    words.insert(0, "");
     for (var i = 0; i < words.length; i++) {
       if (!b.foundWords.contains(words[i])) {
         words.removeAt(i);
@@ -122,8 +122,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
         // the text that the user has entered into the text field.
         onPressed: () {
           List<String> tmp = words;
-          _addWordToArray(words.join("\n") + "\n" + myController.text);
-          myController.clear();
+          //_addWordToArray(words.join("\n") + "\n" + myController.text);
+          _addWordToArray(myController.text);
+          //myController.clear();
         },
         tooltip: 'Show me the value!',
         child: const Icon(Icons.text_fields),
