@@ -14,7 +14,6 @@ class BoggleSolver {
     //initialize the trie with list of words
     final List<String> words = dictionary.all;
     words.forEach(_trie.insert);
-    //TODO: implement a more complete dictionary for the trie
 
     //add dice to board
     for (int i = 0; i < 4; i++) {

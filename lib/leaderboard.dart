@@ -107,18 +107,22 @@ class leaderboardState extends State<leaderboard> {
             TextField(
               controller: controller,
             ),
+            /*
             ElevatedButton(
               onPressed: writeData,
               child: Text('Write to File'),
             ),
+            */
             // RaisedButton(
             //   onPressed: readData,
             //   child: Text("Read from File"),
             // ),
+            /*
             ElevatedButton(
               child: Text("Get DIR path"),
               onPressed: getAppDirectory,
             ),
+            */
             ElevatedButton(
               child: Text("Reset Leaderboard"),
               onPressed: _resetData,

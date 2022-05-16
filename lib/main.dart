@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
     XFile? image;
     final ImagePicker _picker = ImagePicker();
     while(image == null) {
-      image = await _picker.pickImage(source: ImageSource.gallery);
+      image = await _picker.pickImage(source: ImageSource.gallery, imageQuality: 20);
     }
     print('image path');
     print(image.path);
