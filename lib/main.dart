@@ -62,6 +62,15 @@ class MyApp extends StatelessWidget {
     Navigator.push(context, MaterialPageRoute(builder: (context) => BoardView(lines: lines)));
   }
 
+  void _runDemo(context) async {
+    List<String> dice = [
+      "a","t","i","e",
+      "e","a","h","a",
+      "v","e","l","r",
+      "g","w","i","s"];
+    Navigator.push(context, MaterialPageRoute(builder: (context) => results(diceValues: dice)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -95,6 +104,18 @@ class MyApp extends StatelessWidget {
                 color: const Color.fromARGB(255, 71, 149, 236),
                 textColor: const Color.fromARGB(255, 250, 250, 250),
                 onPressed: () => _openGallery(context),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: FlatButton(
+                child: const Text(
+                  'Open Demo Board',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+                color: const Color.fromARGB(255, 71, 149, 236),
+                textColor: const Color.fromARGB(255, 250, 250, 250),
+                onPressed: () => _runDemo(context),
               ),
             ),
             Container(
