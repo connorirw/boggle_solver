@@ -16,7 +16,10 @@ Michael Idzik - michael.idzik01@gmail.com
 5. Run 'flutter run' to run the app on your device/emulator
 
 ## Using the App
-
+1) Choose to take a picture using your phone's camera or select a photo from the camera roll
+2) Input words you have found
+3) Click the blue submit button at the bottom right of the screen to have your score displayed
+4) Submit your score to the local leaderboard!
 
 ## Getting Started with Flutter
 
