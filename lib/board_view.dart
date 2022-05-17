@@ -51,17 +51,29 @@ class _BoardViewState extends State<BoardView> {
       body: Center(
         child: Column(
           children: <Widget>[
-            TextField(
-              controller: _line1
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: TextField(
+                controller: _line1
+              ),
             ),
-            TextField(
-              controller: _line2,
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: TextField(
+                controller: _line2,
+              ),
             ),
-            TextField(
-              controller: _line3,
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: TextField(
+                controller: _line3,
+              ),
             ),
-            TextField(
-              controller: _line4,
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: TextField(
+                controller: _line4,
+              ),
             ),
             TextButton(
               child: const Text("Submit Board"),

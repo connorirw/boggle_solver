@@ -15,7 +15,7 @@ class DiceParcer{
     List<String> lines = ocrResult.split('\n');
     for (int i = 0; i < lines.length; i++) {
       lines[i] = lines[i].toLowerCase();
-      lines[i] = lines[i].replaceAll(' ', '');
+      lines[i] = lines[i].replaceAll(RegExp(r'[^a-z]'), '');
     }
     return lines;
   }

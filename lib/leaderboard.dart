@@ -78,9 +78,6 @@ class leaderboardState extends State<leaderboard> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text('${state}'),
-            TextField(
-              controller: controller,
-            ),
             ElevatedButton(
               child: Text("Reset Leaderboard"),
               onPressed: _resetData,

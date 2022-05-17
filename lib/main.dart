@@ -60,12 +60,23 @@ class MyApp extends StatelessWidget {
   }
 
   void _runDemo(context) async {
+    XFile? image;
+    final ImagePicker _picker = ImagePicker();
+    while (image == null) {
+      image = await _picker.pickImage(source: ImageSource.camera, maxWidth: 1080, maxHeight: 1920);
+    }
     List<String> dice = [
       "a","t","i","e",
       "e","a","h","a",
       "v","e","l","r",
       "g","w","i","s"];
-    Navigator.push(context, MaterialPageRoute(builder: (context) => results(diceValues: dice)));
+    List<String> lines = [
+      'yots',
+      'atre',
+      'lwhs',
+      'nasw'];
+    Navigator.push(context, MaterialPageRoute(builder: (context) => BoardView(lines: lines)));
+    //Navigator.push(context, MaterialPageRoute(builder: (context) => results(diceValues: dice)));
   }
 
   @override

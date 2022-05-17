@@ -94,8 +94,18 @@ class _MyCustomFormState extends State<MyCustomForm> {
     _cleanUserFoundWords();
     double score = _getScore(words, b.foundWords);
     lb.Storage s = lb.Storage();
-    s.writeData('$username    $score%\n');
-    _displayScore(answer);
+    s.writeData('$username    ${score.toStringAsFixed(2)}%');
+    //_displayScore(answer);
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            // Retrieve the text the that user has entered by using the
+            // TextEditingController.
+            content:
+                Text('Score Posted: ${score.toStringAsFixed(2)}\n Words on Board: ${b.foundWords.join(' ')}'));
+      },
+    );
   }
 
   void _displayScore(String word) {
