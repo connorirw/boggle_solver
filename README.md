@@ -1,5 +1,14 @@
 # Boggle Solver
-A computer vision utilizing, Boggle solving application.
+A mobile application for android/ios that automatically logs Boggle scores.
+
+## General Information
+
+This project aims to develop a mobile application for iOS and Android that is capable of taking/uploading a picture of a Boggle game board and solving it for its possible words. In order for this app to be interactive with the user, we've included functionality for a player to upload their found words and score themselves against the Boggle solver. This score can be used to track player skill through the built in leaderboard.
+
+## Tools Used
+
+This application was built in Flutter (by Google) and uses the Open Character Recognition API (OCR) to extract characters from the imported images. The recozied characters are used to generate the Boggle board in the application which is then solved for all possible words.   
+
 
 ## Developers
 
@@ -16,6 +25,10 @@ Michael Idzik - michael.idzik01@gmail.com
 5. Run 'flutter run' to run the app on your device/emulator
 
 ## Using the App
+1. To begin select “Take Picture” or “Select From Camera Roll”
+2. Confirm the app correctly recognized game board (checking for mistakes in the character arrangement)
+3. Report the words that were found on the game board and check score score using in-app icon
+4. Enter player name and submit your score the the leaderboard
 
 
 ## Getting Started with Flutter
